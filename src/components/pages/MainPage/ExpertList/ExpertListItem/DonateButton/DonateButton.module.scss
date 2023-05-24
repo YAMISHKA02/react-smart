@@ -1,0 +1,26 @@
+
+.cellButton {
+  margin-left: auto;
+  font-size: 14px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-weight: 700;
+  color: #fff;
+  background-color: #D86AFF;
+  width: 107px;
+  height: 42px;
+  &:hover {
+    background-color: lighten(#D86AFF, 5%);
+  }
+
+  &:disabled {
+    background-color: #fff;
+    color: #9CA3AF;
+    opacity: 0.5;
+    font-weight: 400;
+    border: 1px solid #9CA3AF;
+  }
+}

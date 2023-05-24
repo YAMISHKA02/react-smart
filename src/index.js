@@ -1,17 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import App from './components/app/App';
+
+import {configureStore} from '@reduxjs/toolkit';
+import {Provider} from 'react-redux';
+import rootReducer from './store/rootReducer';
+import {fetchExperts, setVoteStatus} from './store/reducers/dataReducer';
+import {createAPI} from "./services/api";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+export const api = createAPI();
+
+export const store = configureStore({
+  reducer: rootReducer})
+
+
+store.dispatch(fetchExperts())
+store.dispatch(setVoteStatus('started'))
+
+
+
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App/>
+    </Provider>
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+

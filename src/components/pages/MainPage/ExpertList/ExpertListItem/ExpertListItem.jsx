@@ -1,0 +1,41 @@
+import s from './ExpertListItem.module.scss'
+import DonateButton from "./DonateButton/DonateButton";
+import defaultAva from '../../../../../assets/defaultAva.svg'
+import {useState} from "react";
+import ExpertInfoModal from "./ExpertInfoModal/ExpertInfoModal";
+
+const ExpertListItem = ({expert, number}) => {
+
+  const contributors = expert.events.donates.length
+  const donations = expert.events.donates.reduce((sum, elem) => {
+    return sum + +elem._revardsAmount
+  }, 0)
+
+  const avatar = expert.expert.image ? expert.expert.image : defaultAva;
+
+  const bonus = 234; // рассчитывать надо по формуле
+
+  const [isExpertModalActive, setExpertModalActive] = useState(false);
+
+  return (
+    <li className={s.expertsListItem}>
+      <div className={s.cellNumber}>{number}</div>
+      <div className={s.cellName} onClick={()=>setExpertModalActive(true)}>
+        <img src={avatar} alt="avatar" className={s.expertsAva}/>
+        <a className={s.cellLink} >
+          {expert.expert.name}
+        </a>
+
+      </div>
+      <div className={s.cellContributors}>{contributors}</div>
+      <div className={s.cellDonations}>${donations} <span className={s.cellDonationsPlus}>+{bonus}</span></div>
+      <DonateButton/>
+
+      <ExpertInfoModal isExpertModalActive={isExpertModalActive} setExpertModalActive={setExpertModalActive} expert={expert.expert} avatar={avatar}/>
+
+
+    </li>
+  );
+};
+
+export default ExpertListItem;
