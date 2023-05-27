@@ -1,0 +1,13 @@
+.connectBtn {
+  position: absolute;
+  top: 50px;
+  right: 17px;
+  color: #fff;
+  border: tomato 2px solid;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: tomato;
+  &:hover {
+    background-color: darken(tomato, 10%);
+  }
+}

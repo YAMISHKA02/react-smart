@@ -1,18 +1,20 @@
-import s from './ExpertInfoModal.module.scss'
 import React, {useEffect} from "react";
+
+import s from './ExpertInfoModal.module.scss'
+
 import ExpertTitle from "../../../../../sharedComponents/ExpertTitle/ExpertTitle";
-import tg from "../../../../../../assets/social-tg.svg";
-import twitter from "../../../../../../assets/social-twitter.svg";
-import web from "../../../../../../assets/social-web.svg";
-import insta from "../../../../../../assets/social-insta.svg";
 import ExpertText from "../../../../../sharedComponents/ExpertText/ExpertText";
 import ShareProfile from "../../../../../sharedComponents/ShareProfile/ShareProfile";
 
-const ExpertInfoModal = ({isExpertModalActive, setExpertModalActive, expert, avatar}) => {
+import closeBtn from '../../../../../../assets/close.svg';
+import ExpertDonations from "../../../../../sharedComponents/ExpertDonations/ExpertDonations";
+import DonateButton from "../../../../../sharedComponents/DonateButton/DonateButton";
+
+const ExpertInfoModal = ({isExpertModalActive, setExpertModalActive, expert, avatar, donations, bonus}) => {
 
   const onKeydown = (e) => {
     if (e.key === 'Escape')
-      setExpertModalActive()
+      setExpertModalActive(false)
   }
 
   useEffect(() => {
@@ -26,6 +28,7 @@ const ExpertInfoModal = ({isExpertModalActive, setExpertModalActive, expert, ava
       <div className="overlay" onClick={() => setExpertModalActive(false)}></div>
 
       <div className={s.expertInfoModal}>
+        <button className={s.closeBtn} onClick={()=>setExpertModalActive(false)}><img src={closeBtn} alt="close button"/></button>
         <div className={s.header}>
           <div className={s.mainInfo}>
             <img src={avatar} alt="avatar" className={s.avatar}/>
@@ -34,7 +37,8 @@ const ExpertInfoModal = ({isExpertModalActive, setExpertModalActive, expert, ava
           <ShareProfile expertId={expert.id} classname={s.modal__shareProfile} />
         </div>
         <ExpertText expert={expert} />
-
+        <ExpertDonations classname={s.expertInfoModal__Text} donations={donations} bonus={bonus}/>
+        <DonateButton classname={s.expertInfoModal__donateBtn} />
       </div>
     </>
   );

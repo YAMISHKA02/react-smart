@@ -3,16 +3,21 @@ import s from './ShareProfile.module.scss'
 import shareIcon from '../../../assets/share-icon.svg'
 import {useState} from "react";
 import {useClipboard} from "use-clipboard-copy";
-import {useLocation} from "react-router-dom";
+import {useLocation, useParams} from "react-router-dom";
 
 const ShareProfile = ({classname, expertId}) => {
 
-  const url = `${useLocation().pathname}/${expertId}`;
-
+  let url
+  const path = useLocation().pathname
+  if (path.includes('profile')) {
+    url = window.location.href
+  } else {
+    url = `${window.location.href}profile/${expertId}`
+  }
 
   const showTooltip = () => {
     setIsTooltipShown(true);
-    clipboard.copy(url); // programmatically copying a value
+    clipboard.copy(url);
 
     setTimeout(() => {
       setIsTooltipShown(false)
@@ -29,7 +34,7 @@ const ShareProfile = ({classname, expertId}) => {
         <img className={s.icon} src={shareIcon} alt="share profile icon"/>
       </div>
       {
-        isTooltipShown && <div className={s.tooltip}>Link copped!</div>
+        isTooltipShown && <div className={s.tooltip}>Link copied!</div>
       }
     </div>
 
@@ -37,3 +42,4 @@ const ShareProfile = ({classname, expertId}) => {
 };
 
 export default ShareProfile;
+

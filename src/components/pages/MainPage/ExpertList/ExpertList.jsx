@@ -3,6 +3,7 @@ import {selectExperts} from "../../../../store/reducers/dataReducer";
 import s from './ExpertsBlock.module.scss'
 import mockExpert from '../../../../mocks/mockExpert';
 import ExpertListItem from "./ExpertListItem/ExpertListItem";
+import Clock from "./Clock/Clock";
 
 
 const ExpertList = () => {
@@ -16,11 +17,8 @@ const ExpertList = () => {
             `${experts.length} experts`
           }
         </div>
+        <Clock />
 
-        <div className={s.expertsTime}>
-          <span>QF ends in</span>
-          <div className={s.expertsTimeMinutes}>03 : 23 : 54 : 01</div>
-        </div>
       </div>
       <div className={s.expertsListHeader}>
         <div className={s.cellNumber_header}>#</div>

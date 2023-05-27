@@ -1,9 +1,9 @@
 import s from './ExpertText.module.scss'
 import React from "react";
 
-const ExpertText = ({expert}) => {
+const ExpertText = ({expert, classname}) => {
   return (
-    <div>
+    <div className={classname}>
 
       <h3 className={s.title}>
         About expert

@@ -1,5 +1,5 @@
 import s from './ExpertListItem.module.scss'
-import DonateButton from "./DonateButton/DonateButton";
+import DonateButton from "../../../../sharedComponents/DonateButton/DonateButton";
 import defaultAva from '../../../../../assets/defaultAva.svg'
 import {useState} from "react";
 import ExpertInfoModal from "./ExpertInfoModal/ExpertInfoModal";
@@ -20,18 +20,17 @@ const ExpertListItem = ({expert, number}) => {
   return (
     <li className={s.expertsListItem}>
       <div className={s.cellNumber}>{number}</div>
-      <div className={s.cellName} onClick={()=>setExpertModalActive(true)}>
+      <div className={s.cellName} onClick={() => setExpertModalActive(true)}>
         <img src={avatar} alt="avatar" className={s.expertsAva}/>
-        <a className={s.cellLink} >
-          {expert.expert.name}
+        <a className={s.cellLink}>
+          {expert.expert.name} {expert.expert.position}
         </a>
-
       </div>
       <div className={s.cellContributors}>{contributors}</div>
       <div className={s.cellDonations}>${donations} <span className={s.cellDonationsPlus}>+{bonus}</span></div>
       <DonateButton/>
-
-      <ExpertInfoModal isExpertModalActive={isExpertModalActive} setExpertModalActive={setExpertModalActive} expert={expert.expert} avatar={avatar}/>
+      <ExpertInfoModal isExpertModalActive={isExpertModalActive} setExpertModalActive={setExpertModalActive}
+                       expert={expert.expert} avatar={avatar} donations={donations} bonus={bonus}/>
 
 
     </li>
