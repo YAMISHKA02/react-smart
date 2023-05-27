@@ -9,10 +9,10 @@ const ShareProfile = ({classname, expertId}) => {
 
   let url
   const path = useLocation().pathname
-  if (path.includes('profile')) {
+  if (path.includes('expertProfile')) {
     url = window.location.href
   } else {
-    url = `${window.location.href}profile/${expertId}`
+    url = `${window.location.href}expertProfile/${expertId}`
   }
 
   const showTooltip = () => {

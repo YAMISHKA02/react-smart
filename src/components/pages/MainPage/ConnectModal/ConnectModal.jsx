@@ -22,12 +22,12 @@ const ConnectModal = () => {
       onClose();
   }
 
-  const [step, setStep] = useState(1);
-
   useEffect(() => {
     document.addEventListener('keydown', onKeydown)
     return () => document.removeEventListener('keydown', onKeydown)
   }, [])
+
+  const [step, setStep] = useState(1);
 
 
   const connectIsActive = useSelector(selectConnectIsShown)

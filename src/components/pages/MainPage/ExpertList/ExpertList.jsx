@@ -32,7 +32,6 @@ const ExpertList = () => {
           experts.map((expert, index)=>{
 
             return <ExpertListItem expert={mockExpert} key={index} number={index+1} />
-            //return <ExpertListItem expert={expert} key={index} />
           })
         }
       </ul>

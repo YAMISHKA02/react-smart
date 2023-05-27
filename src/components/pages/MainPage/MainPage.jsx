@@ -18,8 +18,6 @@ const MainPage = () => {
     <>
       <About/>
       <ExpertList/>
-
-      <ConnectModal/>
     </>
   )
 }

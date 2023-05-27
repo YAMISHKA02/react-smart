@@ -14,6 +14,7 @@ import ExpertDonations from "../../sharedComponents/ExpertDonations/ExpertDonati
 import ShareProfile from "../../sharedComponents/ShareProfile/ShareProfile";
 import ExpertTitle from "../../sharedComponents/ExpertTitle/ExpertTitle";
 import ExpertText from "../../sharedComponents/ExpertText/ExpertText";
+import ClaimButton from "../../smartContractComponents/ClaimButton/ClaimButton";
 
 const ExpertProfile = () => {
   const id = useParams().id;
@@ -30,7 +31,6 @@ const ExpertProfile = () => {
   const navigate = useNavigate()
 
   const onEditClick = () => {
-    console.log('he')
     navigate('/edit')
   }
 
@@ -46,20 +46,18 @@ const ExpertProfile = () => {
 
           <div className={s.leftBlock}>
             <img className={s.avatar} src={currentExpert.expert.image} alt="avatar"/>
-            {currentId && <button className={s.editBtn} onClick={onEditClick}>Edit profile</button>  }
-            <ShareProfile classname={s.shareProfile} />
+            {currentId && <button className={s.editBtn} onClick={onEditClick}>Edit profile</button>}
+            <ShareProfile classname={s.shareProfile}/>
           </div>
           <div className={s.rightBlock}>
-            <ExpertTitle expert= {currentExpert.expert}/>
-            <ExpertText expert= {currentExpert.expert} classname={s.text}/>
+            <ExpertTitle expert={currentExpert.expert}/>
+            <ExpertText expert={currentExpert.expert} classname={s.text}/>
           </div>
-
-
-
-
-
         </div>
-        {currentId && <ExpertDonations donations={0} bonus={0} classname={s.expertDonations}/>}
+        <div>
+          {currentId && <ExpertDonations donations={0} bonus={0} classname={s.expertDonations}/>}
+          {currentId && < ClaimButton />}
+        </div>
       </div>
     </div>
   );

@@ -28,7 +28,7 @@ const ExpertListItem = ({expert, number}) => {
       </div>
       <div className={s.cellContributors}>{contributors}</div>
       <div className={s.cellDonations}>${donations} <span className={s.cellDonationsPlus}>+{bonus}</span></div>
-      <DonateButton/>
+      <DonateButton expert={expert} bonus={bonus}/>
       <ExpertInfoModal isExpertModalActive={isExpertModalActive} setExpertModalActive={setExpertModalActive}
                        expert={expert.expert} avatar={avatar} donations={donations} bonus={bonus}/>
 

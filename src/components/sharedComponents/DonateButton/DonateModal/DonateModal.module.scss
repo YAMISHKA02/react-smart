@@ -1,0 +1,95 @@
+.donateModal {
+  z-index: 3;
+  width: 428px;
+  position: fixed;
+  height: 480px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: #FFFFFF;
+  border-radius: 10px;
+  padding: 46px 24px 22px;
+}
+
+.modal {
+  position: relative;
+}
+
+.title {
+  font-family: 'Cabin', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 36px;
+  background: linear-gradient(93.06deg, #FC2EF5 8.21%, #5489D8 50.57%, #2CFF64 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 48px;
+}
+
+.closeBtn {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  object-fit: cover;
+  top: 26px;
+  right: 28px;
+}
+
+
+.youVote {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.02em;
+  color: #6B7280;
+  margin-bottom: 20px;
+}
+
+.youPay {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  color: #1F2937;
+  margin-bottom: 16px;
+}
+
+.textQuadr {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #1F2937;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 26px;
+  border-bottom: 1px solid #F3F4F6;
+  margin-bottom: 26px;
+}
+
+.text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #1F2937;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 34px;
+}
+
+.bonus {
+  color: #11D645;
+  margin-right: 4px;
+}
+
+.bonusWrapper {
+  display:  flex;
+  align-items: center;
+}
+
+.buttonWrapper {
+  display: flex;
+  justify-content: space-between;
+}

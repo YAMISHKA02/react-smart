@@ -11,7 +11,8 @@ const ConfirmConnectBtn = ({step, setStep}) => {
   const onConfirmClick = () => {
     dispatch(setWallet({
       number: '0x2o39u42sdfsd5646546fsdfdfhg3094u',
-      balance: 256,
+      balance: 1256,
+      donated: 30
     }))
     dispatch(setConnectIsShown(false));
     navigate('role')

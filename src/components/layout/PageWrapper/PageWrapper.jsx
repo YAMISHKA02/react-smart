@@ -21,9 +21,7 @@ const PageWrapper = () => {
           <Route path={'/expertProfile/:id'} element={<ExpertProfile/>}/>
           <Route path={'/profile'} element={<UserProfile/>}/>
           <Route path={'*'} element={<div style={{'textAlign': 'center', 'marginTop': 100}}>Страница не найдена</div>}/>
-
         </Routes>
-
     </>
   )
 }

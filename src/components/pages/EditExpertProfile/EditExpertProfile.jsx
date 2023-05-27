@@ -1,6 +1,6 @@
 import s from './EditExpertProfile.module.scss'
 import {ErrorMessage, Field, Form, Formik} from 'formik';
-import {useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import cn from "classnames";
 import {logDOM} from "@testing-library/react";
 import {Navigate, useLocation, useNavigate} from "react-router-dom";
@@ -20,6 +20,15 @@ const EditExpertProfile = () => {
   const onBackClick = () => {
     navigate('/role')
   }
+
+  useEffect(() => {
+    if (currentExpert) {
+      if (currentExpert.expert.image) {
+        refUser.current.style.backgroundImage = `url(${currentExpert.expert.image})`;
+        refUser.current.style.borderRadius = '50%';
+      }
+    }
+  }, [])
 
   const [isEdit, setIsEdit] = useState('true');
 
@@ -45,21 +54,35 @@ const EditExpertProfile = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
+  let initialValues
+
+  if (currentExpert) {
+    initialValues = {
+      firstName: currentExpert.expert.name,
+      secondName: currentExpert.expert.position,
+      experience: currentExpert.expert.experience,
+      courses: currentExpert.expert.learnDescription,
+      telegram: '',
+      twitter: '',
+      instagram: '',
+      website: '',
+    }
+  } else {
+    initialValues = {
+      firstName: '',
+      secondName: '',
+      experience: '',
+      courses: '',
+      telegram: '',
+      twitter: '',
+      instagram: '',
+      website: '',
+    }
+  }
   return (
     <div className={s.container}>
 
-      {/*{!isEdit && <Navigate to={`/profile/${expertId}`}/>}*/}
-
-      <Formik initialValues={{
-        firstName: '',
-        secondName: '',
-        experience: '',
-        courses: '',
-        telegram: '',
-        twitter: '',
-        instagram: '',
-        website: '',
-      }}
+      <Formik initialValues={initialValues}
               validate={values => {
                 const errors = {};
                 if (!values.firstName) {
@@ -80,7 +103,7 @@ const EditExpertProfile = () => {
 
               onSubmit={(values) => {
 
-                const newExpertId = Math.trunc(new Date().valueOf() / 1000)
+                const newExpertId = expertId ? expertId : Math.trunc(new Date().valueOf() / 1000)
 
                 const sendData = {
                   expertId: newExpertId,
@@ -169,7 +192,7 @@ const EditExpertProfile = () => {
               <button className={s.backBtn} type="button" onClick={onBackClick}>Back</button>
 
               <button className={s.continueBtn} type="submit"
-                      disabled={Object.keys(errors).length > 0 && Object.keys(touched).length > 0 || Object.keys(touched).length === 0 || formIsSubmitting === true}>
+                      disabled={Object.keys(errors).length > 0 || Object.keys(touched).length === 0 || formIsSubmitting === true}>
                 {formIsSubmitting ? 'Uploading' : 'Continue'}
               </button>
             </div>

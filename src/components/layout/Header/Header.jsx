@@ -4,19 +4,21 @@ import {Link, useLocation} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {selectConnectIsShown, selectWallet, setConnectIsShown} from "../../../store/reducers/dataReducer";
 import {useState} from "react";
+import ConnectModal from "../../pages/MainPage/ConnectModal/ConnectModal";
+import TopProfileModal from "./TopProfileModal/TopProfileModal";
 
 const Header = () => {
 
   const wallet = useSelector(selectWallet);
 
 
-  const [isShowProfile, setShowProfile] = useState(false);
+  const [profileModalIsShown, setProfileModalIsShown] = useState(false);
 
   const dispatch = useDispatch();
 
   const onHeaderBtnClick = () => {
     if (wallet) {
-      setShowProfile(true);
+      setProfileModalIsShown(true);
     } else {
       dispatch(setConnectIsShown(true))
     }
@@ -48,9 +50,13 @@ const Header = () => {
         </div>
 
         {
-          isShowProfile && <div className={s.headerProfilePopup}>Профиль</div>
+          profileModalIsShown && <div className={s.headerProfilePopup}>Профиль</div>
           // Отд. компонент потом сделай - ОКАЙ
         }
+
+        <TopProfileModal profileModalIsShown={profileModalIsShown} setProfileModalIsShown={setProfileModalIsShown} classname={s.headerProfilePopup} walletNumber={walletStringValue}/>
+
+        <ConnectModal/>
       </div>
     </header>
   );

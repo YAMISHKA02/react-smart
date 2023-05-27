@@ -38,7 +38,7 @@ const ExpertInfoModal = ({isExpertModalActive, setExpertModalActive, expert, ava
         </div>
         <ExpertText expert={expert} />
         <ExpertDonations classname={s.expertInfoModal__Text} donations={donations} bonus={bonus}/>
-        <DonateButton classname={s.expertInfoModal__donateBtn} />
+        <DonateButton classname={s.expertInfoModal__donateBtn} expert={expert} />
       </div>
     </>
   );

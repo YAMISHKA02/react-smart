@@ -5,7 +5,7 @@ import history from "../../browserHistory";
 
 export const fetchExperts = createAsyncThunk('data/fetchExperts',
   async () => {
-    const data = await api.post(APIRoutes.Experts, {expertId: 1685115874}, {
+    const data = await api.post(APIRoutes.Experts, {expertId: 1685177137}, {
         headers: {
           'Content-Type': 'application/json',
           'x-api-key': '74803c46-6f65-4aac-90b1-44d147938011'
@@ -60,6 +60,7 @@ const initialState = {
   // wallet: {
   //   number: '0x2o39u423094u',
   //   balance: 256,
+  //   donated: 30
   // },
   role: null,  // student / expert,
   round: {},
@@ -118,7 +119,7 @@ const dataReducer = createSlice({
     .addCase(sendExpert.fulfilled, (state, action) => {
       state.currentExpertId = action.payload
       state.formIsSubmitting = false
-      history.push('/expertProfile/'+ state.currentExpertId);
+      history.push('/expertProfile/' + state.currentExpertId);
     })
     .addCase(sendExpert.rejected, (state, action) => {
       console.log('set Expert error ')
@@ -161,5 +162,6 @@ export const selectCurrentExpertId = (state) => state.DATA.currentExpertId
 export const selectFormIsSubmitting = (state) => state.DATA.formIsSubmitting
 export const selectCurrentExpert = (state) => state.DATA.currentExpert
 export const selectIsOneExpertLoading = (state) => state.DATA.isOneExpertLoading
+export const selectRole = (state) => state.DATA.role
 
 
