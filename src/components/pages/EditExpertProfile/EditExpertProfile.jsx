@@ -21,6 +21,8 @@ const EditExpertProfile = () => {
     navigate('/role')
   }
 
+  const [isEdit, setIsEdit] = useState('true');
+
   const refUser = useRef(null);
 
   const [file, setFile] = useState(null)
@@ -46,7 +48,7 @@ const EditExpertProfile = () => {
   return (
     <div className={s.container}>
 
-      {/*{expertId && !currentExpert && <Navigate to={`/profile/${expertId}`}/>}*/}
+      {/*{!isEdit && <Navigate to={`/profile/${expertId}`}/>}*/}
 
       <Formik initialValues={{
         firstName: '',

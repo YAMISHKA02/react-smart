@@ -7,15 +7,8 @@ import {Provider} from 'react-redux';
 import rootReducer from './store/rootReducer';
 import {fetchExperts, setRoundData} from './store/reducers/dataReducer';
 import {createAPI} from "./services/api";
-import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import MainPage from "./components/pages/MainPage/MainPage";
-import ExpertProfile from "./components/pages/ExpertProfile/ExpertProfile";
-import UserProfile from "./components/pages/UserProfile/UserProfile";
-import Role from "./components/pages/Role/Role";
-import EditExpertProfile from "./components/pages/EditExpertProfile/EditExpertProfile";
-
-
-// const root = ReactDOM.createRoot(document.getElementById('root'));
+import BrowserHistoryRouter from "./components/browserHistoryRouter/browserHistoryRouter";
+import history from "./browserHistory";
 
 export const api = createAPI();
 
@@ -31,42 +24,14 @@ store.dispatch(setRoundData({
   timeLeft: 202530,
 }))
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <App/>,
-    children: [
-      {
-        index: true,
-        element: <MainPage/>
-      },
-      {
-        path: 'role',
-        element: <Role/>
-      },
-      {
-        path: 'edit',
-        element: <EditExpertProfile/>
-      },
-      {
-        path: 'profile/:id',
-        element: <ExpertProfile/>
-      },
-      {
-        path: 'profile',
-        element: <UserProfile/>
-      },
-      {
-        path: '*',
-        element: <div style={{'textAlign': 'center', 'marginTop': 100}}>Страница не найдена</div>
-      },
-    ]
-  }])
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <Provider store={store}>
-      <RouterProvider router={router}/>
-    </Provider>
+  <Provider store={store}>
+    <BrowserHistoryRouter history={history}>
+      <App/>
+    </BrowserHistoryRouter>
+  </Provider>
 );
 

@@ -1,8 +1,7 @@
 import {createAsyncThunk, createSelector, createSlice} from '@reduxjs/toolkit'
 import {api, store} from '../../index'
 import {APIRoutes} from '../../consts'
-import {BrowserHistory, createBrowserHistory} from 'history'
-const history = createBrowserHistory()
+import history from "../../browserHistory";
 
 export const fetchExperts = createAsyncThunk('data/fetchExperts',
   async () => {
@@ -119,7 +118,7 @@ const dataReducer = createSlice({
     .addCase(sendExpert.fulfilled, (state, action) => {
       state.currentExpertId = action.payload
       state.formIsSubmitting = false
-      history.push('/profile/'+ state.currentExpertId);
+      history.push('/expertProfile/'+ state.currentExpertId);
     })
     .addCase(sendExpert.rejected, (state, action) => {
       console.log('set Expert error ')
