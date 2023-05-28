@@ -3,7 +3,7 @@ import s from './TopProfileModal.module.scss'
 import profileBtn from '../../../../assets/profile-link.svg'
 import greenRound from '../../../../assets/wallet-green-round.svg'
 import onBtn from '../../../../assets/onBtn.svg'
-import WithDrawBtn from "../../../smartContractComponents/WithDrawBtn/WithDrawBtn";
+import WithdrawBtn from "../../../smartContractComponents/WithdrawBtn/WithdrawBtn";
 import {useSelector} from "react-redux";
 import {selectCurrentExpertId, selectRole, selectRound, selectWallet} from "../../../../store/reducers/dataReducer";
 import {useNavigate} from "react-router-dom";
@@ -60,7 +60,7 @@ const TopProfileModal = ({profileModalIsShown, setProfileModalIsShown, classname
             <div className={s.balanceName}>Donated</div>
             <div className={s.balanceValue}>{wallet.donated} Matic</div>
           </div>
-          <WithDrawBtn classname={s.withDraw} />
+          <WithdrawBtn classname={s.withDraw} />
         </div>
       </div>
     </div>

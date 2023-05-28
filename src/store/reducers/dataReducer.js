@@ -2,6 +2,7 @@ import {createAsyncThunk, createSelector, createSlice} from '@reduxjs/toolkit'
 import {api, store} from '../../index'
 import {APIRoutes} from '../../consts'
 import history from "../../browserHistory";
+import mockExperts from "../../mocks/mockExperts";
 
 export const fetchExperts = createAsyncThunk('data/fetchExperts',
   async () => {
@@ -12,7 +13,7 @@ export const fetchExperts = createAsyncThunk('data/fetchExperts',
         }
       }
     );
-    return [data.data, data.data, data.data, data.data, data.data];
+    return mockExperts;
   })
 
 export const fetchOneExpert = createAsyncThunk('data/fetchOneExpert',
@@ -96,7 +97,17 @@ const dataReducer = createSlice({
     },
     setFormIsSubmitting: (state, action) => {
       state.formIsSubmitting = action.payload
-    }
+    },
+
+    setIsVoted: (state, action) => {
+      const id = action.payload;
+      const targetExpertIndex = state.experts.findIndex((expert) => {
+        return expert.expert.id === id
+      })
+
+      const newTargetExpert = Object.assign(state.experts[targetExpertIndex], {isDonated: true})
+      state.experts =  [...state.experts.slice(0, targetExpertIndex), newTargetExpert, ...state.experts.slice(targetExpertIndex+1)]
+    },
   },
 
   extraReducers: (builder) => builder
@@ -106,9 +117,10 @@ const dataReducer = createSlice({
     .addCase(fetchExperts.fulfilled, (state, action) => {
       state.experts = action.payload
       state.isLoading = false
+      // console.log(state.experts)
     })
     .addCase(fetchExperts.rejected, (state, action) => {
-      console.log('fetching error ')
+      console.log('experts fetching error ')
       state.isLoading = false
     })
 
@@ -122,10 +134,9 @@ const dataReducer = createSlice({
       history.push('/expertProfile/' + state.currentExpertId);
     })
     .addCase(sendExpert.rejected, (state, action) => {
-      console.log('set Expert error ')
+      console.log('expert uploading error ')
       state.formIsSubmitting = false
     })
-
 
     .addCase(fetchOneExpert.pending, (state, action) => {
       state.isOneExpertLoading = true;
@@ -135,11 +146,9 @@ const dataReducer = createSlice({
       state.isOneExpertLoading = false
     })
     .addCase(fetchOneExpert.rejected, (state, action) => {
-      console.log('load Expert error ')
+      console.log('expert downloading error ')
       state.isOneExpertLoading = false
     })
-
-
 })
 
 export const {
@@ -147,7 +156,8 @@ export const {
   setConnectIsShown,
   setWalletType,
   setWallet,
-  setUserRole
+  setUserRole,
+  setIsVoted
 } = dataReducer.actions
 
 export default dataReducer.reducer
@@ -163,5 +173,3 @@ export const selectFormIsSubmitting = (state) => state.DATA.formIsSubmitting
 export const selectCurrentExpert = (state) => state.DATA.currentExpert
 export const selectIsOneExpertLoading = (state) => state.DATA.isOneExpertLoading
 export const selectRole = (state) => state.DATA.role
-
-

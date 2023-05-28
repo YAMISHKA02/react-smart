@@ -1,7 +1,7 @@
 import s from './UserProfile.module.scss'
 import {useDispatch, useSelector} from "react-redux";
 import {selectWallet, setUserRole} from "../../../store/reducers/dataReducer";
-import WithDrawBtn from "../../smartContractComponents/WithDrawBtn/WithDrawBtn";
+import WithdrawBtn from "../../smartContractComponents/WithdrawBtn/WithdrawBtn";
 import {useState} from "react";
 import UserProfileModal from "./UserProfileModal/UserProfileModal";
 
@@ -24,7 +24,7 @@ const UserProfile = () => {
             <h1 className={s.donated}>0 tokens donated</h1> :
             <h1 className={s.donated}>{wallet.donated} Matic donated</h1>
           }
-          <WithDrawBtn disabled={wallet.donated === 0}/>
+          <WithdrawBtn disabled={wallet.donated === 0}/>
 
           <p className={s.text}>You can withdraw your tokens if the Expert fails to fulfill its obligations.</p>
         </div>

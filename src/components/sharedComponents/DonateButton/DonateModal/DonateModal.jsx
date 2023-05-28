@@ -63,7 +63,7 @@ const DonateModal = ({expert, isDonateModalShown, setIsDonateModalShown, bonus})
             </div>
             <div className={s.buttonWrapper}>
               <ApprovePaymentBtn step={step} setStep={setStep}/>
-              <ConfirmPaymentBtn step={step} setStep={setStep}/>
+              <ConfirmPaymentBtn step={step} setStep={setStep} expert={expert}/>
             </div>
 
             <div className={s.progress}>

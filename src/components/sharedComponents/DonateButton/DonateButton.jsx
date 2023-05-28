@@ -23,7 +23,6 @@ const DonateButton = ({expert, classname, bonus}) => {
   const onDonateClick = () => {
     setIsDonateModalShown(true)
   }
-
   return (
     <div>
       <div onMouseEnter={() => showTooltip()}
@@ -32,7 +31,7 @@ const DonateButton = ({expert, classname, bonus}) => {
       >
 
         <button className={cn(s.cellButton, classname)}
-                disabled={!wallet || roundStatus !== 1}
+                disabled={!wallet || roundStatus !== 1 || expert.isDonated === true}
                 onClick={onDonateClick}
         >Donate
         </button>

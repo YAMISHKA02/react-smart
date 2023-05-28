@@ -1,10 +1,8 @@
 import {useSelector} from "react-redux";
 import {selectExperts} from "../../../../store/reducers/dataReducer";
 import s from './ExpertsBlock.module.scss'
-import mockExpert from '../../../../mocks/mockExpert';
 import ExpertListItem from "./ExpertListItem/ExpertListItem";
 import Clock from "./Clock/Clock";
-
 
 const ExpertList = () => {
   const experts = useSelector(selectExperts);
@@ -18,7 +16,6 @@ const ExpertList = () => {
           }
         </div>
         <Clock />
-
       </div>
       <div className={s.expertsListHeader}>
         <div className={s.cellNumber_header}>#</div>
@@ -30,12 +27,10 @@ const ExpertList = () => {
       <ul>
         {
           experts.map((expert, index)=>{
-
-            return <ExpertListItem expert={mockExpert} key={index} number={index+1} />
+            return <ExpertListItem expert={expert} key={index} number={index+1} />
           })
         }
       </ul>
-
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import s from './Clock.module.scss'
-import {useDispatch, useSelector} from "react-redux";
-import {selectRound, setRoundData} from "../../../../../store/reducers/dataReducer";
+import { useSelector} from "react-redux";
+import {selectRound} from "../../../../../store/reducers/dataReducer";
 import {useEffect, useState} from "react";
 
 const getTimeString = (time) => {
@@ -13,8 +13,6 @@ const Clock = () => {
   const round = useSelector(selectRound);
   const [secondsLeft, setSecondsLeft] = useState(round.timeLeft)
 
-  const dispatch = useDispatch();
-
   let timer
   useEffect(() => {
     timer = null
@@ -22,18 +20,14 @@ const Clock = () => {
       timer = setInterval(() => {
         setSecondsLeft((prev) => {
           if (prev === 1 ) window.location.reload()
-
           return prev - 1;
         });
       }, 1000);
-
       return () => {
         timer = null;
       }
     }
-
   }, [round])
-
 
   const days = getTimeString(Math.trunc(secondsLeft / 86400));
   const hours = getTimeString(Math.trunc((secondsLeft - days * 86400) / 3600));
