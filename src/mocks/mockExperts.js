@@ -1,4 +1,4 @@
-const mockExpert = {
+const mockExperts = {
   success: true,
   events: {
     donates: [
@@ -39,4 +39,4 @@ const mockExpert = {
   }
 }
 
-export default mockExpert
+export default mockExperts
