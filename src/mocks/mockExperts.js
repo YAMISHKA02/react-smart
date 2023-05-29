@@ -13,15 +13,6 @@ const mockExperts = [
           blockNumber: "35096735",
           blockTimestamp: "1683035402"
         },
-        {
-          id: "0x9eb1f646e2a388d4b525dbe5b6df272880574c9c8faf473027e465aef70ddc5a04000001",
-          _sender: "0xd4df3332781e3a7ef6555739b4db6319sdfsdfsd2c60bd",
-          _expertId: "654654",
-          _revardsAmount: "174",
-          _isVoteAdded: false,
-          blockNumber: "35096735",
-          blockTimestamp: "1683035402"
-        },
       ],
       enableMoneyBacks: [],
       gotMoneyBacks: [],
@@ -30,7 +21,7 @@ const mockExperts = [
     expert: {
       id: 654654,
       name: "Ivan",
-      image: null,
+      image: "http://ec2-3-89-222-10.compute-1.amazonaws.com:8082/static/ff9abfb2b8ff8dd18c89bcad1b5f4923.jpeg",
       position: "Ivanov",
       links: null,
       experience: "I am a blockchain technology specialist. I teach people the basics of blockchain technology. I explain everything in simple terms.",
@@ -137,6 +128,15 @@ const mockExperts = [
           _sender: "0xd4df3332781e3a7ef6555739b4db6319sdfsdfsd2c60bd",
           _expertId: "232",
           _revardsAmount: "55",
+          _isVoteAdded: false,
+          blockNumber: "35096735",
+          blockTimestamp: "1683035402"
+        },
+        {
+          id: "0x9eb1f646e2a388d4b525dbe5b6df272880574c9c8faf4730sdfsdf27e465aef70ddc5a04000001",
+          _sender: "0xd4df3332781e3a7ef6555739b4db6319sdfsdfsd2c60bd",
+          _expertId: "232",
+          _revardsAmount: "15",
           _isVoteAdded: false,
           blockNumber: "35096735",
           blockTimestamp: "1683035402"
