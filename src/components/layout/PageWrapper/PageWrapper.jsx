@@ -6,14 +6,13 @@ import EditExpertProfile from "../../pages/EditExpertProfile/EditExpertProfile";
 import ExpertProfile from "../../pages/ExpertProfile/ExpertProfile";
 import UserProfile from "../../pages/UserProfile/UserProfile";
 import BrowserHistoryRouter from "../../browserHistoryRouter/browserHistoryRouter";
+import {Web3Button} from "@web3modal/react";
 
 
 const PageWrapper = () => {
   return (
     <>
       <Header/>
-      {/*<Outlet />*/}
-
         <Routes>
           <Route path={'/'} element={<MainPage/>}/>
           <Route path={'/role'} element={<Role/>}/>
