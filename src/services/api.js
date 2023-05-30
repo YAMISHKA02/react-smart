@@ -18,11 +18,6 @@ export const createAPI = () => {
     timeout: TIMEOUT,
   })
 
-  // api.interceptors.request.use((config) => {
-  //   config.headers['x-api-key'] = '74803c46-6f65-4aac-90b1-44d147938011';
-  //   config.headers['Content-Type'] = 'application/json';  // Надо ли? а картику как посылать?
-  //   return config
-  // })
 
   api.interceptors.response.use((response) => response,
     (error) => {

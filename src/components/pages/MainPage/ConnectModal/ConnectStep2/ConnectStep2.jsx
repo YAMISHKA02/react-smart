@@ -38,8 +38,10 @@ const ConnectStep2 = ({setStep}) => {
       <h2 className={s.title}>{walletType}</h2>
       <img className={s.image} src={image} alt="brand picture"/>
 
-      <div className={s.desc}>Requesting Connection</div>
-      <div className={s.text}>Open the MetaMask broser extension to connect your wallet</div>
+      {walletType !== 'WalletConnect' ? <>
+        <div className={s.desc}>Requesting Connection</div>
+        <div className={s.text}>Open the MetaMask broser extension to connect your wallet</div>
+      </> : null}
 
     </div>
   );
