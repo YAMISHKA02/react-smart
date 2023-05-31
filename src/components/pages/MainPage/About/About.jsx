@@ -33,11 +33,8 @@ const About = () => {
             <span>Prizepool</span>
           </div>
         </li>
-
-
       </ul>
     </>
-
   )
 }
 
