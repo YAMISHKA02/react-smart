@@ -1,12 +1,10 @@
 import Header from "../Header/Header";
 import MainPage from "../../pages/MainPage/MainPage";
-import {Outlet, Route, Routes} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import Role from "../../pages/Role/Role";
 import EditExpertProfile from "../../pages/EditExpertProfile/EditExpertProfile";
 import ExpertProfile from "../../pages/ExpertProfile/ExpertProfile";
 import UserProfile from "../../pages/UserProfile/UserProfile";
-import BrowserHistoryRouter from "../../browserHistoryRouter/browserHistoryRouter";
-import {Web3Button} from "@web3modal/react";
 
 
 const PageWrapper = () => {
