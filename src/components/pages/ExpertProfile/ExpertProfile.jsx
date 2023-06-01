@@ -37,13 +37,10 @@ const ExpertProfile = () => {
   if (isCurrentExpertExpertLoading) return <div style={{'textAlign': 'center', 'padding': 50}}><RotatingLines
     strokeColor="#4481c3"/></div>
 
-
   return (
     currentExpert && <div>
-
       <div className={s.container}>
         <div className={s.mainBlock}>
-
           <div className={s.leftBlock}>
             <img className={s.avatar} src={currentExpert.expert.image} alt="avatar"/>
             {currentId && <button className={s.editBtn} onClick={onEditClick}>Edit profile</button>}

@@ -1,9 +1,8 @@
 import s from './EditExpertProfile.module.scss'
-import {ErrorMessage, Field, Form, Formik} from 'formik';
+import {Field, Form, Formik} from 'formik';
 import {useEffect, useRef, useState} from "react";
 import cn from "classnames";
-import {logDOM} from "@testing-library/react";
-import {Navigate, useLocation, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {
   selectCurrentExpert,
   selectCurrentExpertId,
@@ -31,9 +30,7 @@ const EditExpertProfile = () => {
   }, [])
 
   const [isEdit, setIsEdit] = useState('true');
-
   const refUser = useRef(null);
-
   const [file, setFile] = useState(null)
 
   const fileChangeHandler = (e, setFieldValue) => {
@@ -55,7 +52,6 @@ const EditExpertProfile = () => {
   const navigate = useNavigate()
 
   let initialValues
-
   if (currentExpert) {
     initialValues = {
       firstName: currentExpert.expert.name,
@@ -102,9 +98,7 @@ const EditExpertProfile = () => {
               }}
 
               onSubmit={(values) => {
-
                 const newExpertId = expertId ? expertId : Math.trunc(new Date().valueOf() / 1000)
-
                 const sendData = {
                   expertId: newExpertId,
                   info: {
@@ -116,18 +110,13 @@ const EditExpertProfile = () => {
                   }
                 }
                 dispatch(sendExpert({sendData, file}))
-
-
               }}
       >
         {({errors, touched, values}) => (
-
           <Form className={s.form}>
-
             <h1 className={s.title}>Tell us about you</h1>
             <div className={s.profileImageLabel}>Profile image</div>
             <div className={s.profileImageRecommend}>JPEG, PNG, GIF. Recommend 400x400. Max 5mb</div>
-
             <Field type="file" name="avatar" className={s.fileInput} id="file" onChange={fileChangeHandler}/>
             <label ref={refUser} className={s.fileInputLabel} htmlFor="file" style={{}}></label>
 
@@ -136,11 +125,9 @@ const EditExpertProfile = () => {
               <Field type="text" name="firstName" placeholder="First Name" className={s.topInput}
                      style={{'borderColor': (errors.firstName && touched.firstName) ? 'red' : touched.firstName ? '#6B7280' : '#D1D5DB'}}
               />
-
               <Field type="text" name="secondName" placeholder="Second Name" className={s.topInput}
                      style={{'borderColor': (errors.secondName && touched.secondName) ? 'red' : touched.secondName ? '#6B7280' : '#D1D5DB'}}
               />
-
             </div>
             <div className={s.text}>
               Describe your experience
@@ -151,7 +138,7 @@ const EditExpertProfile = () => {
                    className={s.textarea}
                    style={{'borderColor': (errors.experience && touched.experience) ? 'red' : touched.experience ? '#6B7280' : '#D1D5DB'}}
             />
-            <div className={s.textAreaBottomLabel}>0/200</div>
+            <div className={s.textAreaBottomLabel}>{values.experience.length}/200</div>
 
             <div className={s.text}>
               Describe what you teach
@@ -160,7 +147,7 @@ const EditExpertProfile = () => {
                    className={s.textarea}
                    style={{'borderColor': (errors.courses && touched.courses) ? 'red' : touched.courses ? '#6B7280' : '#D1D5DB'}}
             />
-            <div className={s.textAreaBottomLabel}>0/200</div>
+            <div className={s.textAreaBottomLabel}>{values.courses.length}/200</div>
 
             <div className={s.addLinksTitle}>Add links to your social media profiles</div>
 
@@ -190,7 +177,6 @@ const EditExpertProfile = () => {
 
             <div className={s.formButtons}>
               <button className={s.backBtn} type="button" onClick={onBackClick}>Back</button>
-
               <button className={s.continueBtn} type="submit"
                       disabled={Object.keys(errors).length > 0 || Object.keys(touched).length === 0 || formIsSubmitting === true}>
                 {formIsSubmitting ? 'Uploading' : 'Continue'}
@@ -198,7 +184,6 @@ const EditExpertProfile = () => {
             </div>
           </Form>
         )}
-
       </Formik>
     </div>
   )

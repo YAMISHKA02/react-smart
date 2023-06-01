@@ -23,7 +23,6 @@ const ExpertList = () => {
         <div className={s.cellContributors_header}>Contributors</div>
         <div className={s.cellDonations_header}>Donations</div>
       </div>
-
       <ul>
         {
           experts.map((expert, index)=>{

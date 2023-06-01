@@ -1,6 +1,6 @@
 import s from './UserProfileModal.module.scss'
 import {useNavigate} from "react-router-dom";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 
 const UserProfileModal = ({isModalActive, setIsModalActive}) => {
   const navigate = useNavigate()
@@ -15,7 +15,6 @@ const UserProfileModal = ({isModalActive, setIsModalActive}) => {
     return () => document.removeEventListener('keydown', onKeydown)
   }, [])
 
-
   return (
     isModalActive && <div>
       <div className="overlayTransparent" onClick={() => setIsModalActive(false)}></div>
@@ -25,13 +24,8 @@ const UserProfileModal = ({isModalActive, setIsModalActive}) => {
         <div className={s.buttonsWrapper}>
           <button className={s.switchBtn} onClick={() => navigate('/edit')}>Yes, switch</button>
           <button className={s.noBtn} onClick={() => setIsModalActive(false)}>No</button>
-
         </div>
-
-
       </div>
-
-
     </div>
   );
 };

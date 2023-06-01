@@ -6,7 +6,6 @@ import EditExpertProfile from "../../pages/EditExpertProfile/EditExpertProfile";
 import ExpertProfile from "../../pages/ExpertProfile/ExpertProfile";
 import UserProfile from "../../pages/UserProfile/UserProfile";
 
-
 const PageWrapper = () => {
   return (
     <>

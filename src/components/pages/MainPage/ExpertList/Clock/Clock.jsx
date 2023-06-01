@@ -9,7 +9,6 @@ const getTimeString = (time) => {
 }
 
 const Clock = () => {
-
   const round = useSelector(selectRound);
   const [secondsLeft, setSecondsLeft] = useState(round.timeLeft)
 

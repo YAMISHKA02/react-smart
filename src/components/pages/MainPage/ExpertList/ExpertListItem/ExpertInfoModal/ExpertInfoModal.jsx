@@ -26,7 +26,6 @@ const ExpertInfoModal = ({isExpertModalActive, setExpertModalActive, expert, ava
     isExpertModalActive &&
     <>
       <div className="overlay" onClick={() => setExpertModalActive(false)}></div>
-
       <div className={s.expertInfoModal}>
         <button className={s.closeBtn} onClick={()=>setExpertModalActive(false)}><img src={closeBtn} alt="close button"/></button>
         <div className={s.header}>

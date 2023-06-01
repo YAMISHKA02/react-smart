@@ -8,7 +8,6 @@ const About = () => {
     <>
       <h1 className={s.mainTitle}>Quadratic funding #1 for experts Birthplace of Web3 tutorials</h1>
       <p className={s.aboutText}>Support experts from $1 and get NFT coupon for up to 100% discount</p>
-
       <ul className={s.aboutFeatures}>
         <li className={s.aboutFeaturesItem}>
           <div className={s.featureValue}>$5,872</div>
@@ -17,7 +16,6 @@ const About = () => {
             <span>Donations</span>
           </div>
         </li>
-
         <li className={s.aboutFeaturesItem}>
           <div className={s.featureValue}>2342</div>
           <div className={s.featureName}>
@@ -25,7 +23,6 @@ const About = () => {
             <span>Contributors</span>
           </div>
         </li>
-
         <li className={s.aboutFeaturesItem}>
           <div className={s.featureValue}>$250.000 </div>
           <div className={s.featureName}>

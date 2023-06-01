@@ -34,7 +34,6 @@ const Role = () => {
       <label className={s.label} htmlFor="expert">I’m an expert</label>
       <input className={s.radio} type="radio" name="role" id="student" onInput={onStudentInput}/>
       <label className={s.label} htmlFor="student">I’m a student</label>
-
       <button className={s.btn} disabled={!isActive} onClick={onSubmit}>Continue</button>
     </div>
   )

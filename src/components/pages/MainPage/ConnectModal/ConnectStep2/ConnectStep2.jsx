@@ -42,7 +42,6 @@ const ConnectStep2 = ({setStep}) => {
         <div className={s.desc}>Requesting Connection</div>
         <div className={s.text}>Open the MetaMask broser extension to connect your wallet</div>
       </> : null}
-
     </div>
   );
 };

@@ -2,7 +2,6 @@
   margin: 130px auto 32px;
   width: 290px;
   text-align: center;
-
 }
 
 .title {
@@ -22,6 +21,7 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 20px;
+
   &:after {
     content: '';
     width: 24px;
@@ -29,13 +29,12 @@
     position: absolute;
     left: 72px;
     top: 0;
-
     background-image: url(../../../assets/radio-unchecked.svg);
   }
 }
 
 .radio {
-  display: none ;
+  display: none;
 }
 
 .radio:checked + .label:after {
@@ -43,7 +42,7 @@
 }
 
 .btn {
-
+  cursor: pointer;
   border-radius: 25px;
   width: 144px;
   height: 36px;
@@ -52,11 +51,11 @@
   align-items: center;
   margin: 44px auto;
   border: 1px solid #CB00DD;
-  color:  #CB00DD;
+  color: #CB00DD;
 
   &:disabled {
     border: 1px solid #9CA3AF;
     opacity: 0.5;
-    color:  #9CA3AF;
+    color: #9CA3AF;
   }
 }
