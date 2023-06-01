@@ -5,10 +5,7 @@ import {RotatingLines} from 'react-loader-spinner';
 import ExpertList from "./ExpertList/ExpertList";
 
 const MainPage = () => {
-
-
   const isLoading = useSelector(selectIsLoading);
-
   if (isLoading) return <div style={{'textAlign': 'center', 'padding': 50}}><RotatingLines strokeColor="#4481c3"/></div>
 
   return (

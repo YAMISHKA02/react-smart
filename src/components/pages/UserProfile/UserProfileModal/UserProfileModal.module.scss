@@ -37,6 +37,7 @@
 }
 
 .switchBtn {
+  cursor: pointer;
   width: 188px;
   height: 36px;
   display: flex;
@@ -53,6 +54,7 @@
 }
 
 .noBtn {
+  cursor: pointer;
   width: 188px;
   height: 36px;
   display: flex;
@@ -66,5 +68,4 @@
   text-align: center;
   letter-spacing: 0.02em;
   color: #FFFFFF;
-
 }

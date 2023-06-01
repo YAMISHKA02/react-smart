@@ -5,16 +5,13 @@ import {useState} from "react";
 import ExpertInfoModal from "./ExpertInfoModal/ExpertInfoModal";
 
 const ExpertListItem = ({expert, number}) => {
-
   const contributors = expert.events.donates.length
   const donations = expert.events.donates.reduce((sum, elem) => {
     return sum + +elem._revardsAmount
   }, 0)
 
   const avatar = expert.expert.image ? expert.expert.image : defaultAva;
-
   const bonus = 234; // рассчитывать надо по формуле
-
   const [isExpertModalActive, setExpertModalActive] = useState(false);
 
   return (
@@ -31,8 +28,6 @@ const ExpertListItem = ({expert, number}) => {
       <DonateButton expert={expert} bonus={bonus}/>
       <ExpertInfoModal isExpertModalActive={isExpertModalActive} setExpertModalActive={setExpertModalActive}
                        expert={expert} avatar={avatar} donations={donations} bonus={bonus}/>
-
-
     </li>
   );
 };

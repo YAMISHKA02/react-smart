@@ -1,5 +1,5 @@
 import {createAsyncThunk, createSelector, createSlice} from '@reduxjs/toolkit'
-import {api, store} from '../../index'
+import {api} from '../../index'
 import {APIRoutes} from '../../consts'
 import history from "../../browserHistory";
 import mockExperts from "../../mocks/mockExperts";
@@ -50,7 +50,6 @@ export const sendExpert = createAsyncThunk('data/sendExpert',
         }
       });
     }
-
     return sendData.expertId;
   })
 
@@ -58,12 +57,7 @@ const initialState = {
   experts: [],
   isLoading: false,
   wallet: null,
-  // wallet: {
-  //   number: '0x2o39u423094u',
-  //   balance: 256,
-  //   donated: 30
-  // },
-  role: null,  // student / expert,
+  role: null,
   round: {},
   connectIsShown: false,
   walletType: null,
@@ -104,7 +98,6 @@ const dataReducer = createSlice({
       const targetExpertIndex = state.experts.findIndex((expert) => {
         return expert.expert.id === id
       })
-
       const newTargetExpert = Object.assign(state.experts[targetExpertIndex], {isDonated: true})
       state.experts =  [...state.experts.slice(0, targetExpertIndex), newTargetExpert, ...state.experts.slice(targetExpertIndex+1)]
     },
@@ -117,7 +110,6 @@ const dataReducer = createSlice({
     .addCase(fetchExperts.fulfilled, (state, action) => {
       state.experts = action.payload
       state.isLoading = false
-      // console.log(state.experts)
     })
     .addCase(fetchExperts.rejected, (state, action) => {
       console.log('experts fetching error ')
@@ -137,7 +129,6 @@ const dataReducer = createSlice({
       console.log('expert uploading error ')
       state.formIsSubmitting = false
     })
-
     .addCase(fetchOneExpert.pending, (state, action) => {
       state.isOneExpertLoading = true;
     })

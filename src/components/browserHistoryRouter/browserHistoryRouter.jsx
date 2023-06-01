@@ -1,5 +1,5 @@
 import { useEffect, useState} from 'react'
-import {BrowserRouter, Router} from 'react-router-dom'
+import {Router} from 'react-router-dom'
 
 function BrowserHistoryRouter({history, children}) {
   const [historyState, setHistoryState] = useState({location: history.location, action: history.action})
