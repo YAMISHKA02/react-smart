@@ -11,13 +11,13 @@ import { Web3Button, Web3NetworkSwitch } from '@web3modal/react'
 import { ethers } from "ethers"
 import { usePrepareContractWrite } from 'wagmi'
 import { useContractRead } from 'wagmi'
-
+import { useNetwork, useSwitchNetwork } from 'wagmi'
 //
 const MainPage = () => {
 
 
   const isLoading = useSelector(selectIsLoading);
-
+  let currenChain
   if (isLoading) return <div style={{'textAlign': 'center', 'padding': 50}}><RotatingLines strokeColor="#4481c3"/></div>
 
 
@@ -26,7 +26,17 @@ const MainPage = () => {
     const { data, isError, isLoading } = useBalance({
       address: address,
     })
-    if (isConnected) return <div>Connected to { address }</div>
+    //
+    currenChain = useNetwork().chain
+    const { chains, error, isLoad, pendingChainId, switchNetwork } =
+    useSwitchNetwork()
+    //
+    if (isConnected){
+      console.log("Chain")
+      console.log(currenChain)
+      console.log(chains)
+      return <div>Connected to { address }</div>
+    } 
   
     return <Web3Button/>
   }
@@ -50,7 +60,7 @@ const MainPage = () => {
     
   }
 
-  function Contract() {
+  function ContractReadOwner() {
     const { address, isConnected } = useAccount()
     const { data, isError, isLoading } = useContractRead({
       address: '0xf79F7c03910c595303fC03b7d99393202C24dAEA',
@@ -88,7 +98,7 @@ const MainPage = () => {
 
       <Profile />
       <ProfileBalance/>
-      <Contract/>
+      <ContractReadOwner/>
       <ContractWrite/>
 
       <About/>

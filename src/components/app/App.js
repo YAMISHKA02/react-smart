@@ -6,16 +6,16 @@ import './App.scss';
 import {EthereumClient, w3mConnectors, w3mProvider} from '@web3modal/ethereum'
 import {Web3Modal} from '@web3modal/react'
 import {configureChains, createConfig, WagmiConfig} from 'wagmi'
-import {arbitrum, mainnet, polygon, polygonMumbai} from 'wagmi/chains'
+import {polygonMumbai} from 'wagmi/chains'
 import { publicProvider } from 'wagmi/providers/public'
 
-const chains = [arbitrum, mainnet, polygon,polygonMumbai]
+const chains = [polygonMumbai]
 const projectId = '678dd611607cf4d445084821cf371cb9'
 
 const {publicClient} = configureChains(chains, [w3mProvider({projectId})])
 
 const { webSocketPublicClient } = configureChains(
-  [mainnet],
+  [polygonMumbai],
   [publicProvider()],
 )
 
