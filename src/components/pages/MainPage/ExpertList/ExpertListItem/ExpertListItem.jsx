@@ -5,8 +5,8 @@ import {useState} from "react";
 import ExpertInfoModal from "./ExpertInfoModal/ExpertInfoModal";
 
 const ExpertListItem = ({expert, number}) => {
-  const contributors = expert.events.donates.length
-  const donations = expert.events.donates.reduce((sum, elem) => {
+  const contributors = expert.donates.length
+  const donations = expert.donates.reduce((sum, elem) => {
     return sum + +elem._revardsAmount
   }, 0)
 

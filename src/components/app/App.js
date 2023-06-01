@@ -5,12 +5,16 @@ import './App.scss';
 
 import {EthereumClient, w3mConnectors, w3mProvider} from '@web3modal/ethereum'
 import {Web3Modal} from '@web3modal/react'
-import {configureChains, createConfig, WagmiConfig} from 'wagmi'
-import {arbitrum, mainnet, polygon} from 'wagmi/chains'
+import {configureChains, createConfig, useAccount, useBalance, WagmiConfig} from 'wagmi'
+import {arbitrum, mainnet, polygon, polygonMumbai} from 'wagmi/chains'
 import { publicProvider } from 'wagmi/providers/public'
+import {useDispatch, useSelector} from "react-redux";
+import {selectWallet, setWallet} from "../../store/reducers/dataReducer";
+import {useEffect} from "react";
+import {ethers} from "ethers";
 
-const chains = [arbitrum, mainnet, polygon]
-const projectId = 'YOUR_PROJECT_ID'
+const chains = [arbitrum, mainnet, polygon, polygonMumbai]
+const projectId = '678dd611607cf4d445084821cf371cb9'
 
 const {publicClient} = configureChains(chains, [w3mProvider({projectId})])
 
@@ -28,6 +32,7 @@ const wagmiConfig = createConfig({
 const ethereumClient = new EthereumClient(wagmiConfig, chains)
 
 function App() {
+
   return (
     <>
       <WagmiConfig config={wagmiConfig}>

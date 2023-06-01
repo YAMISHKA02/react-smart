@@ -14,6 +14,7 @@ const Header = () => {
 
   const onHeaderBtnClick = () => {
     if (wallet) {
+      console.log(wallet)
       setProfileModalIsShown(true);
     } else {
       dispatch(setConnectIsShown(true))
@@ -43,10 +44,11 @@ const Header = () => {
             !wallet ? `CONNECT` : `${walletStringValue}`}</button>}
         </div>
         {
-          profileModalIsShown && <div className={s.headerProfilePopup}>Профиль</div>
+
+          //profileModalIsShown &&
+           <TopProfileModal profileModalIsShown={profileModalIsShown} setProfileModalIsShown={setProfileModalIsShown}
+                           classname={s.headerProfilePopup} walletNumber={walletStringValue}/>
         }
-        <TopProfileModal profileModalIsShown={profileModalIsShown} setProfileModalIsShown={setProfileModalIsShown}
-                         classname={s.headerProfilePopup} walletNumber={walletStringValue}/>
         <ConnectModal/>
       </div>
     </header>

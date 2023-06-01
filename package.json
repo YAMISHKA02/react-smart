@@ -11,6 +11,7 @@
     "@web3modal/react": "^2.4.1",
     "axios": "^1.4.0",
     "classnames": "^2.3.2",
+    "ethers": "^6.4.0",
     "formik": "^2.4.0",
     "history": "^5.3.0",
     "http-status-codes": "^2.2.0",

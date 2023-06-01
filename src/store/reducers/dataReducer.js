@@ -6,14 +6,16 @@ import mockExperts from "../../mocks/mockExperts";
 
 export const fetchExperts = createAsyncThunk('data/fetchExperts',
   async () => {
-    const data = await api.post(APIRoutes.Experts, {expertId: 1685177137}, {
+    const data = await api.post(APIRoutes.getAllExpert, {}, {
         headers: {
           'Content-Type': 'application/json',
           'x-api-key': '74803c46-6f65-4aac-90b1-44d147938011'
         }
       }
     );
-    return mockExperts;
+    console.log(data.data.data)
+
+    return data.data.data;
   })
 
 export const fetchOneExpert = createAsyncThunk('data/fetchOneExpert',
@@ -110,6 +112,7 @@ const dataReducer = createSlice({
     .addCase(fetchExperts.fulfilled, (state, action) => {
       state.experts = action.payload
       state.isLoading = false
+      console.log(action.payload)
     })
     .addCase(fetchExperts.rejected, (state, action) => {
       console.log('experts fetching error ')

@@ -21,7 +21,7 @@ const UserProfile = () => {
         <div className={s.mainContent}>
           {wallet.donated === 0 ?
             <h1 className={s.donated}>0 tokens donated</h1> :
-            <h1 className={s.donated}>{wallet.donated} Matic donated</h1>
+            <h1 className={s.donated}>{wallet.donated ? wallet.donated: '0'} Matic donated</h1>
           }
           <WithdrawBtn disabled={wallet.donated === 0}/>
           <p className={s.text}>You can withdraw your tokens if the Expert fails to fulfill its obligations.</p>

@@ -5,10 +5,11 @@ import {Provider} from 'react-redux';
 
 import App from './components/app/App';
 import rootReducer from './store/rootReducer';
-import {fetchExperts, setRoundData} from './store/reducers/dataReducer';
+import {fetchExperts, setRoundData, setWallet} from './store/reducers/dataReducer';
 import {createAPI} from "./services/api";
 import BrowserHistoryRouter from "./components/browserHistoryRouter/browserHistoryRouter";
 import history from "./browserHistory";
+import {useAccount, useBalance} from "wagmi";
 
 export const api = createAPI();
 
@@ -23,6 +24,7 @@ store.dispatch(setRoundData({
   status: 1,
   timeLeft: 202530,
 }))
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

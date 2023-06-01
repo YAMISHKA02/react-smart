@@ -59,7 +59,7 @@ const DonateModal = ({expert, isDonateModalShown, setIsDonateModalShown, bonus})
 
             <div className={s.text}>
               <span>Balance</span>
-              <div className={s.bonusWrapper}><span>${wallet.balance}</span></div>
+              <div className={s.bonusWrapper}><span>${wallet.balance.data}</span></div>
             </div>
             <div className={s.buttonWrapper}>
               <ApprovePaymentBtn step={step} setStep={setStep}/>

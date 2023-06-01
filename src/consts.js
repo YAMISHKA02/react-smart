@@ -1,6 +1,7 @@
 export const APIRoutes = {
   Experts: '/getInfo',
   sendExpert: '/setInfo',
-  uploadImage: '/uploadImage'
+  uploadImage: '/uploadImage',
+  getAllExpert: '/getInfoByAllExperts'
 }
 

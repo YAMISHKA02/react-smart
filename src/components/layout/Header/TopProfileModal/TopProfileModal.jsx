@@ -17,8 +17,12 @@ const TopProfileModal = ({profileModalIsShown, setProfileModalIsShown, classname
   const navigate = useNavigate();
 
   const onLinkClick = () => {
-    if (role === 'student') navigate('/profile')
-    if (role === 'expert') navigate('/expertProfile/' + currentId)
+    if (role === 'expert') {
+      navigate('/expertProfile/' + currentId)
+    } else {
+      navigate('/profile')
+    }
+
     setProfileModalIsShown(false)
   }
 
@@ -33,19 +37,19 @@ const TopProfileModal = ({profileModalIsShown, setProfileModalIsShown, classname
   }, [])
 
   return (
-    role && profileModalIsShown && <div className={classname}>
-      <div className="overlayTransparent" onClick={()=>setProfileModalIsShown(false)}></div>
+    wallet && profileModalIsShown && <div className={classname}>
+      <div className="overlayTransparent" onClick={() => setProfileModalIsShown(false)}></div>
       <div className={s.modal}>
         <div className={s.header}>
           <h3 className={s.title}>Profile</h3>
           <button className={s.profileBtn}><img src={profileBtn} alt="profile link"
-          onClick={onLinkClick}
+                                                onClick={onLinkClick}
           /></button>
         </div>
         <div className={s.walletWrapper}>
           <div className={s.balance}>
             <div className={s.balanceName}>Balance</div>
-            <div className={s.balanceValue}>{wallet.balance} Matic</div>
+            <div className={s.balanceValue}>{wallet.balance ? wallet.balance: '0'} Matic</div>
           </div>
           <div className={s.walletNumberWrapper}>
             <span className={s.walletNumber}>{walletNumber}</span>
@@ -58,7 +62,7 @@ const TopProfileModal = ({profileModalIsShown, setProfileModalIsShown, classname
             <div className={s.balanceName}>Donated</div>
             <div className={s.balanceValue}>{wallet.donated} Matic</div>
           </div>
-          <WithdrawBtn classname={s.withDraw} />
+          <WithdrawBtn classname={s.withDraw}/>
         </div>
       </div>
     </div>
